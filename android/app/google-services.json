@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "273425196651",
+    "firebase_url": "https://rncafereviewapp.firebaseio.com",
+    "project_id": "rncafereviewapp",
+    "storage_bucket": "rncafereviewapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273425196651:android:4949a24d4d39f47f04f32e",
+        "android_client_info": {
+          "package_name": "com.rncafereviewapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273425196651-l3953b5rou0bqo6o9aod2btvtrb3rmbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHkQmExnmQzAJcUAzJGclmfvE2olxOj54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273425196651-l3953b5rou0bqo6o9aod2btvtrb3rmbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
