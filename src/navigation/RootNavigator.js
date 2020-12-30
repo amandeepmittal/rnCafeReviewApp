@@ -8,8 +8,7 @@ import AppNavigator from './AppNavigator';
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      {/* <AuthNavigator /> */}
-      <AppNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 };

@@ -1,15 +1,26 @@
 import React from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 
-export default function SignIn({navigation}) {
+import Button from '../../components/Button';
+import TextInput from '../../components/TextInput';
+
+export default function SignIn() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Login Screen</Text>
-      <Button
-        title="Go to sign up"
-        color="orange"
-        onPress={() => navigation.navigate('SignUp')}
-      />
+      <View style={styles.formContainer}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>Email Address</Text>
+          <TextInput
+            icon="mail"
+            placeholder="Enter your email"
+            autoCapitalize="none"
+            autoCompleteType="email"
+            keyboardType="email-address"
+            returnKeyType="next"
+          />
+        </View>
+        <Button label="Sign in" />
+      </View>
     </View>
   );
 }
@@ -18,12 +29,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
   },
   text: {
     fontSize: 20,
     color: '#000',
     paddingBottom: 16,
+  },
+  formContainer: {
+    paddingHorizontal: 20,
+    alignItems: 'flex-start',
+  },
+  inputContainer: {
+    width: '100%',
+    marginVertical: 10,
+  },
+  inputLabel: {
+    fontSize: 14,
+    color: '#888',
+    textTransform: 'uppercase',
+    marginBottom: 8,
   },
 });
