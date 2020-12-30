@@ -7,6 +7,9 @@ import TextInput from '../../components/TextInput';
 export default function SignIn() {
   return (
     <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Welcome back!</Text>
+      </View>
       <View style={styles.formContainer}>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Email Address</Text>
@@ -17,6 +20,17 @@ export default function SignIn() {
             autoCompleteType="email"
             keyboardType="email-address"
             returnKeyType="next"
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>Password</Text>
+          <TextInput
+            icon="key"
+            placeholder="Enter your password"
+            autoCapitalize="none"
+            autoCompleteType="password"
+            returnKeyType="go"
+            secureTextEntry
           />
         </View>
         <Button label="Sign in" />
@@ -49,5 +63,13 @@ const styles = StyleSheet.create({
     color: '#888',
     textTransform: 'uppercase',
     marginBottom: 8,
+  },
+  titleContainer: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  title: {
+    fontSize: 24,
+    color: '#010101',
   },
 });

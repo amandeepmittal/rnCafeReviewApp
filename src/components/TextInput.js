@@ -2,7 +2,7 @@ import React from 'react';
 import {TextInput as RNTextInput, View, StyleSheet} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const TextInput = ({icon, otherProps}) => {
+const TextInput = ({icon, ...otherProps}) => {
   const validationColor = '#223e4b';
 
   return (
