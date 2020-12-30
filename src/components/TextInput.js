@@ -2,8 +2,8 @@ import React from 'react';
 import {TextInput as RNTextInput, View, StyleSheet} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const TextInput = ({icon, ...otherProps}) => {
-  const validationColor = '#223e4b';
+const TextInput = ({icon, error, touched, ...otherProps}) => {
+  const validationColor = !touched ? '#223e4b' : error ? '#FF5A5F' : '#223e4b';
 
   return (
     <View
