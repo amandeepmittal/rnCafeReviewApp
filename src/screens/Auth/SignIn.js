@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
+import BorderlessButton from '../../components/BorderlessButton';
 
 const signInSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -71,27 +72,14 @@ export default function SignIn() {
           />
         </View>
         <Button label="Sign in" onPress={handleSubmit} />
-        {/* <View style={styles.borderlessButtonWrapper}>
-          <View style={styles.borderlessButtonContainer}>
-            <Text style={styles.borderlessButtonPlaceholder}>
-              Don't have an account?
-            </Text>
-            <BorderlessButton onPress={() => alert('Pressed')}>
-              <Text style={styles.borderlessButtonLabel}>Sign up!</Text>
-            </BorderlessButton>
-          </View>
-        </View> */}
         <View style={styles.borderlessButtonWrapper}>
-          <View style={styles.borderlessButtonContainer}>
-            <Text style={styles.borderlessButtonPlaceholder}>
-              Don't have an account?
-            </Text>
-            <Pressable
-              onPress={() => alert('Pressed!')}
-              android_ripple={{color: '#d7cbb4', borderless: true}}>
-              <Text style={styles.borderlessButtonLabel}>Sign up!</Text>
-            </Pressable>
-          </View>
+          <BorderlessButton
+            placeholder={true}
+            placeholderText="Don't have an account?"
+            onPress={() => alert('Pressed')}
+            rippleColor="#d7cbb4"
+            label="Sign Up!"
+          />
         </View>
       </View>
     </View>
@@ -134,18 +122,5 @@ const styles = StyleSheet.create({
   borderlessButtonWrapper: {
     alignSelf: 'center',
     marginTop: 16,
-  },
-  borderlessButtonContainer: {
-    flexDirection: 'row',
-  },
-  borderlessButtonPlaceholder: {
-    fontSize: 14,
-    color: '#888',
-    paddingRight: 4,
-  },
-  borderlessButtonLabel: {
-    fontSize: 14,
-    color: '#cc7351',
-    paddingRight: 4,
   },
 });
