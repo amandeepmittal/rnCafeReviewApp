@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {TextInput as RNTextInput, View, StyleSheet} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const TextInput = ({icon, error, touched, ...otherProps}) => {
+const TextInput = forwardRef(({icon, error, touched, ...otherProps}, ref) => {
   const validationColor = !touched ? '#223e4b' : error ? '#FF5A5F' : '#223e4b';
 
   return (
@@ -21,6 +21,7 @@ const TextInput = ({icon, error, touched, ...otherProps}) => {
       </View>
       <View style={{flex: 1}}>
         <RNTextInput
+          ref={ref}
           underlineColorAndroid="transparent"
           placeholderTextColor="rgba(34, 62, 75, 0.7)"
           {...otherProps}
@@ -28,6 +29,6 @@ const TextInput = ({icon, error, touched, ...otherProps}) => {
       </View>
     </View>
   );
-};
+});
 
 export default TextInput;

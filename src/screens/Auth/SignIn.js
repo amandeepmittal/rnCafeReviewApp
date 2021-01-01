@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -15,6 +15,7 @@ const signInSchema = Yup.object().shape({
 });
 
 export default function SignIn() {
+  const password = useRef(null);
   const {
     handleChange,
     handleSubmit,
@@ -48,11 +49,13 @@ export default function SignIn() {
             onBlur={handleBlur('email')}
             error={errors.email}
             touched={touched.email}
+            onSubmitEditing={() => password.current?.focus()}
           />
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Password</Text>
           <TextInput
+            ref={password}
             icon="key"
             placeholder="Enter your password"
             autoCapitalize="none"
@@ -63,6 +66,7 @@ export default function SignIn() {
             onBlur={handleBlur('password')}
             error={errors.password}
             touched={touched.password}
+            onSubmitEditing={() => handleSubmit()}
           />
         </View>
         <Button label="Sign in" onPress={handleSubmit} />
