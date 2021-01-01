@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import {BorderlessButton} from 'react-native-gesture-handler';
 
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
@@ -70,6 +71,16 @@ export default function SignIn() {
           />
         </View>
         <Button label="Sign in" onPress={handleSubmit} />
+        <View style={styles.borderlessButtonWrapper}>
+          <View style={styles.borderlessButtonContainer}>
+            <Text style={styles.borderlessButtonPlaceholder}>
+              Don't have an account?
+            </Text>
+            <BorderlessButton onPress={() => alert('Pressed')}>
+              <Text style={styles.borderlessButtonLabel}>Sign up!</Text>
+            </BorderlessButton>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -107,5 +118,22 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     color: '#010101',
+  },
+  borderlessButtonWrapper: {
+    alignSelf: 'center',
+    marginTop: 16,
+  },
+  borderlessButtonContainer: {
+    flexDirection: 'row',
+  },
+  borderlessButtonPlaceholder: {
+    fontSize: 14,
+    color: '#888',
+    paddingRight: 4,
+  },
+  borderlessButtonLabel: {
+    fontSize: 14,
+    color: '#cc7351',
+    paddingRight: 4,
   },
 });
