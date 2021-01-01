@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Pressable} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {BorderlessButton} from 'react-native-gesture-handler';
@@ -71,7 +71,7 @@ export default function SignIn() {
           />
         </View>
         <Button label="Sign in" onPress={handleSubmit} />
-        <View style={styles.borderlessButtonWrapper}>
+        {/* <View style={styles.borderlessButtonWrapper}>
           <View style={styles.borderlessButtonContainer}>
             <Text style={styles.borderlessButtonPlaceholder}>
               Don't have an account?
@@ -79,6 +79,18 @@ export default function SignIn() {
             <BorderlessButton onPress={() => alert('Pressed')}>
               <Text style={styles.borderlessButtonLabel}>Sign up!</Text>
             </BorderlessButton>
+          </View>
+        </View> */}
+        <View style={styles.borderlessButtonWrapper}>
+          <View style={styles.borderlessButtonContainer}>
+            <Text style={styles.borderlessButtonPlaceholder}>
+              Don't have an account?
+            </Text>
+            <Pressable
+              onPress={() => alert('Pressed!')}
+              android_ripple={{color: '#d7cbb4', borderless: true}}>
+              <Text style={styles.borderlessButtonLabel}>Sign up!</Text>
+            </Pressable>
           </View>
         </View>
       </View>
