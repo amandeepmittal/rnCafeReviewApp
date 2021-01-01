@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import {BorderlessButton} from 'react-native-gesture-handler';
+// import {BorderlessButton} from 'react-native-gesture-handler';
 
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
