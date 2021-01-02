@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import {useNavigation} from '@react-navigation/native';
 
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
@@ -16,6 +17,8 @@ const signInSchema = Yup.object().shape({
 });
 
 export default function SignIn() {
+  const navigation = useNavigation();
+
   const password = useRef(null);
   const {
     handleChange,
@@ -75,7 +78,7 @@ export default function SignIn() {
           <BorderlessButton
             placeholder={true}
             placeholderText="Don't have an account?"
-            onPress={() => alert('Pressed')}
+            onPress={() => navigation.navigate('SignUp')}
             rippleColor="#d7cbb4"
             label="Sign Up!"
           />
