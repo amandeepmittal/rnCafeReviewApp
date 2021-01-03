@@ -1,8 +1,9 @@
-import React, {useRef} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {StyleSheet, View, Text, ActivityIndicator} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
@@ -15,6 +16,7 @@ const SignUpSchema = Yup.object().shape({
 });
 
 export default function SignUp() {
+  const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
   const email = useRef(null);
   const password = useRef(null);
@@ -29,11 +31,28 @@ export default function SignUp() {
   } = useFormik({
     validationSchema: SignUpSchema,
     initialValues: {name: '', email: '', password: ''},
-    onSubmit: (values) =>
-      alert(
-        `Name: ${values.name}, Email: ${values.email}, Password: ${values.password}`
-      ),
+    onSubmit: (values) => handleSignUp(values),
   });
+
+  const handleSignUp = async (values) => {
+    const {email, password} = values;
+    try {
+      setIsLoading(true);
+      await auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((response) => console.log(response));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size="large" color="#cc7351" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
