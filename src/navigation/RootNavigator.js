@@ -16,7 +16,6 @@ const RootNavigator = () => {
   // Handle user state changes
   function handleOnAuthStateChanged(user) {
     setUser(user);
-
     if (isLoading) setIsLoading(false);
   }
 
