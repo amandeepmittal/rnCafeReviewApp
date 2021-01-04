@@ -4,6 +4,8 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import Toast from 'react-native-simple-toast';
 
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
@@ -35,14 +37,45 @@ export default function SignUp() {
   });
 
   const handleSignUp = async (values) => {
-    const {email, password} = values;
+    const {name, email, password} = values;
     try {
       setIsLoading(true);
       await auth()
         .createUserWithEmailAndPassword(email, password)
-        .then((response) => console.log(response));
+        .then((response) => {
+          const uid = response.user.uid;
+
+          const data = {
+            id: uid,
+            name,
+            email,
+            createdAt: Date.now(),
+          };
+
+          firestore().collection('users').doc(uid).set(data);
+        });
     } catch (err) {
-      console.log(err);
+      switch (err.code) {
+        case 'auth/invalid-email':
+        case 'auth/email-already-in-use':
+          Toast.show(
+            'Please enter a valid email address.',
+            Toast.LONG,
+            Toast.BOTTOM
+          );
+          break;
+        case 'auth/user-disabled':
+          Toast.show(
+            'This account has been disabled.',
+            Toast.LONG,
+            Toast.BOTTOM
+          );
+          break;
+        default:
+          console.log(err);
+          break;
+      }
+      setIsLoading(false);
     }
   };
 
