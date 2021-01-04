@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Stylesheet,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import auth from '@react-native-firebase/auth';
