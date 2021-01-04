@@ -123,6 +123,13 @@ export default function SignIn() {
             label="Sign Up!"
           />
         </View>
+        <View style={styles.forgotPasswordContainer}>
+          <BorderlessButton
+            onPress={() => navigation.navigate('ForgotPassword')}
+            rippleColor="#d7cbb4"
+            label="Forgot Password?"
+          />
+        </View>
       </View>
     </View>
   );
@@ -164,5 +171,9 @@ const styles = StyleSheet.create({
   borderlessButtonWrapper: {
     alignSelf: 'center',
     marginTop: 16,
+  },
+  forgotPasswordContainer: {
+    alignSelf: 'center',
+    marginTop: 18,
   },
 });

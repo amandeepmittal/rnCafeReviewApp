@@ -13,7 +13,7 @@ const AuthNavigator = () => {
     <Auth.Navigator headerMode="none">
       <Auth.Screen name="SignIn" component={SignIn} />
       <Auth.Screen name="SignUp" component={SignUp} />
-      {/* <Auth.Screen name="ForgotPassword" component={ForgotPassword} /> */}
+      <Auth.Screen name="ForgotPassword" component={ForgotPassword} />
     </Auth.Navigator>
   );
 };
